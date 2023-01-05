@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.padding {
+  padding: 5% 7%;
+}
+
+.login {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  flex-direction: column;
+}
+.login .login__l {
+  flex-grow: 1;
+  background-color: #fdfdfd;
+  display: grid;
+}
+.login .login__l .image-container {
+  padding-top: 500px;
+}
+.login .login__r {
+  flex-grow: 1;
+  padding-top: 200px;
+}
+.login .login__r .heading h3 {
+  color: #213f7d;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 55px;
+  letter-spacing: -0.04em;
+  margin-bottom: 10px;
+}
+.login .login__r .heading p {
+  color: #545f7d;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  margin-bottom: 60px;
+}
+.login .login__r .form-control {
+  width: 447px;
+  height: 50px;
+  background: #ffffff;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  padding: 5px 12px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login .login__r .form-control .form-group {
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  font-size: 15px;
+}
+.login .login__r .form-control span {
+  color: #39cdcc;
+}
+.login .login__r .password {
+  color: #39cdcc;
+  font-size: 12px;
+  margin-bottom: 20px;
+  letter-spacing: 10%;
+  text-transform: uppercase;
+}
+.login .login__r .form__btn {
+  background-color: #39cdcc;
+  width: 447px;
+  height: 48px;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+}
+.login .login__r .form__btn:hover {
+  opacity: 0.7;
+  transition: all 0.25s ease-in-out;
+}
+@media (min-width: 1200px) {
+  .login {
+    flex-direction: row;
+  }
+}
