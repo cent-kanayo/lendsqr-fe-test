@@ -12,6 +12,7 @@ export interface Users {
   socials: Socials;
   education: Education;
   id: string;
+  status: string;
 }
 
 export interface Education {
