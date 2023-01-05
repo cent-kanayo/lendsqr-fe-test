@@ -1,1 +1,10 @@
-
+@import './variables';
+.text-color1 {
+  color: $primary-text;
+}
+.text-color2 {
+  color: $secondary-text;
+}
+.text-color3 {
+  color: $tertiary-text;
+}

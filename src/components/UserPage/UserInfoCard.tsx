@@ -1,3 +1,5 @@
+import './_users.scss';
+
 interface Card {
   image: string;
   text: string;
@@ -7,8 +9,8 @@ const UserInfoCard = ({ image, text, figure }: Card) => {
   return (
     <article className="card">
       <img src={image} alt="avatar" />
-      <p>{text}</p>
-      <h3>{figure}</h3>
+      <p className="text-color2">{text}</p>
+      <h3 className="text-color1">{figure.toLocaleString()}</h3>
     </article>
   );
 };
