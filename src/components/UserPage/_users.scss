@@ -26,6 +26,7 @@
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   padding: 2%;
+  margin-bottom: 40px;
   p {
     font-style: normal;
     font-weight: 500;
@@ -40,4 +41,21 @@
     line-height: 28px;
     text-transform: uppercase;
   }
+}
+
+.table__container {
+  padding: 3%;
+  background: #ffffff;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.table {
+  color: $secondary-text;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
 }

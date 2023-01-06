@@ -5,15 +5,14 @@ import User3 from '../../assets/user-3.png';
 import User4 from '../../assets/user-4.png';
 import { Users } from '../../../usertypes';
 
-import { AgGridReact } from 'ag-grid-react'; // the AG Grid React Component
-import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
-import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
-import { useState } from 'react';
+import UsersTable from './UsersTable';
 
-interface User {
+export interface User {
   users: Users[];
+  setPage: (page: number) => void;
 }
-const UsersPage = ({ users }: User) => {
+
+const UsersPage = ({ users, setPage }: User) => {
   return (
     <div className="users">
       <h4 className="text-color1">Users</h4>
@@ -23,7 +22,34 @@ const UsersPage = ({ users }: User) => {
         <UserInfoCard image={User3} text="users with loans" figure={12453} />
         <UserInfoCard image={User4} text="users with savings" figure={102453} />
       </div>
-      <div></div>
+      <div className="table__container">
+        <UsersTable
+          users={users}
+          setPage={function (page: number): void {
+            throw new Error('Function not implemented.');
+          }}
+        />
+      </div>
+      <div className="filters">
+        <div>
+          <span>Showing</span>
+          <span>
+            <select name="" id="">
+              <option value="">100</option>
+            </select>
+          </span>
+          <span>Out 100</span>
+        </div>
+        <div>
+          {users?.slice(0, 3).map((_, index) => {
+            return <button onClick={() => setPage(index)}>{index + 1}</button>;
+          })}
+          <span>...</span>
+          {users?.slice(users.length - 2).map((_, index) => {
+            return <button>{index + 1}</button>;
+          })}
+        </div>
+      </div>
     </div>
   );
 };

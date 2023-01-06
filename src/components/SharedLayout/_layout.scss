@@ -68,4 +68,27 @@
   width: 283px;
   background: #ffffff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  gap: 20px;
+
+  #{&}__links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    h5 {
+      font-size: 12;
+      text-transform: uppercase;
+      color: $primary-text;
+    }
+  }
+
+  #{&}__sublinks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+    margin-bottom: 30px;
+    color: $secondary-text;
+    span {
+      font-size: 16px;
+    }
+  }
 }

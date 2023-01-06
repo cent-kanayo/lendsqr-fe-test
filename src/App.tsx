@@ -1,24 +1,20 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Users } from '../usertypes';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Login, SharedLayout, UsersPage } from './components';
+import { Login, SharedLayout, UsersPage, UserDetails } from './components';
 
-import { AgGridReact } from 'ag-grid-react'; // the AG Grid React Component
-
-import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
-import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
-import paginate from './utils';
+import paginate, { customFetch } from './utils';
 
 function App() {
   const [users, setUsers] = useState([] as Users[][]);
-  const usersUrl = `https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users`;
+  const [page, setPage] = useState(0);
+  const [paginated, setPaginated] = useState(users[page]);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await axios.get<Promise<Users[]>>(usersUrl);
-        const modifiedData = (await data).map((item, index) => {
+        const { data } = await customFetch.get('/users');
+        const modifiedData = data.map((item: Users, index: number) => {
           return {
             ...item,
             status:
@@ -32,8 +28,7 @@ function App() {
           };
         });
 
-        setUsers(paginate(modifiedData));
-        // console.log(data);
+        setUsers(paginate(modifiedData, 9));
       } catch (error: any) {
         console.log(error.message);
       }
@@ -41,12 +36,19 @@ function App() {
     fetchUsers();
   }, []);
 
+  useEffect(() => {
+    setPaginated(users[page]);
+  }, [page]);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="login" element={<Login />} />
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<UsersPage users={users[0]} />} />
+          <Route
+            index
+            element={<UsersPage users={paginated} setPage={setPage} />}
+          />
+          <Route path="users/:id" element={<UserDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>

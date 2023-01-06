@@ -8,6 +8,11 @@ $bg-color: #fbfbfb;
 @mixin shadow {
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
 }
+@mixin flexItems {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 @mixin tabletSize {
   @media (min-width: $tablet) {
