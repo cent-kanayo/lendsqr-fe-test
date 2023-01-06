@@ -4,6 +4,126 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+img {
+  display: block;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+select {
+  all: unset;
+}
+
+.text-color1 {
+  color: #213f7d;
+}
+
+.text-color2 {
+  color: #545f7d;
+}
+
+.text-color3 {
+  color: #39cdcc;
+}
+
+.pending {
+  background-color: #fdf7e5;
+  color: #e6b000;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.active {
+  background-color: #f3fcf6;
+  color: #39cd62;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.blacklisted {
+  background-color: #fce6eb;
+  color: #e4033b;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.inactive {
+  background-color: #f5f5f7;
+  color: #545f7d;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.btn__blacklist {
+  color: #e4033b;
+  background-color: transparent;
+  border: 1px solid #e4033b;
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+.btn__blacklist:hover {
+  background-color: #e4033b;
+  color: #fbfbfb;
+  transition: all 0.5s linear;
+}
+
+.btn__activate {
+  color: #39cdcc;
+  background-color: transparent;
+  border: 1px solid #39cdcc;
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+.btn__activate:hover {
+  background-color: #39cdcc;
+  color: #fbfbfb;
+  transition: all 0.25s linear;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flex-btw {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.table__data {
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+}
+
+tr {
+  font-size: 14px;
+}
+
 .padding {
   padding: 5% 7%;
 }
@@ -18,9 +138,14 @@
   flex-grow: 1;
   background-color: #fdfdfd;
   display: grid;
+  position: relative;
 }
 .login .login__l .image-container {
   padding-top: 500px;
+}
+.login .login__l .login__main-thumbnail {
+  max-width: 600px;
+  width: 100%;
 }
 .login .login__r {
   flex-grow: 1;
@@ -43,7 +168,8 @@
   margin-bottom: 60px;
 }
 .login .login__r .form-control {
-  width: 447px;
+  max-width: 447px;
+  width: 100%;
   height: 50px;
   background: #ffffff;
   border: 2px solid rgba(84, 95, 125, 0.15);
@@ -75,11 +201,13 @@
 }
 .login .login__r .form__btn {
   background-color: #39cdcc;
-  width: 447px;
+  max-width: 447px;
+  width: 100%;
   height: 48px;
   border: none;
   border-radius: 5px;
   color: #ffffff;
+  text-align: center;
 }
 .login .login__r .form__btn:hover {
   opacity: 0.7;

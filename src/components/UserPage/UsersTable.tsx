@@ -10,56 +10,56 @@ const UsersTable = ({ users }: User) => {
         width="100%"
         cellSpacing="20px"
         bordered={true}
-        cellPadding="20px"
+        cellPadding="10px"
       >
         <thead>
-          <tr>
+          <tr style={{ borderBottom: '1px solid gray' }}>
             <th align="left">
               <div className="flex">
                 <span>Organization</span>
-                <span>
+                <button>
                   <img src={FilterIcon} alt="filter icon" />
-                </span>
+                </button>
               </div>
             </th>
             <th align="left">
               <div className="flex">
                 <span>Username</span>
-                <span>
+                <button>
                   <img src={FilterIcon} alt="filter icon" />
-                </span>
+                </button>
               </div>
             </th>
             <th align="left">
               <div className="flex">
                 <span>Email</span>
-                <span>
+                <button>
                   <img src={FilterIcon} alt="filter icon" />
-                </span>
+                </button>
               </div>
             </th>
             <th align="left">
               <div className="flex">
                 <span>Phone number</span>
-                <span>
+                <button>
                   <img src={FilterIcon} alt="filter icon" />
-                </span>
+                </button>
               </div>
             </th>
             <th align="left">
               <div className="flex">
                 <span>Date Joined</span>
-                <span>
+                <button>
                   <img src={FilterIcon} alt="filter icon" />
-                </span>
+                </button>
               </div>
             </th>
             <th align="left">
               <div className="flex">
                 <span>Status</span>
-                <span>
+                <button>
                   <img src={FilterIcon} alt="filter icon" />
-                </span>
+                </button>
               </div>
             </th>
             <th></th>
@@ -70,7 +70,6 @@ const UsersTable = ({ users }: User) => {
             return (
               <tr key={user.id} className="table__data">
                 <td>{user.orgName}</td>
-
                 <td>{`${user.profile.firstName} ${user.profile.lastName}`}</td>
                 <td>{user.email}</td>
                 <td>{user.phoneNumber}</td>

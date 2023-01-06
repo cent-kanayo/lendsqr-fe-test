@@ -1,7 +1,11 @@
 @import '../../styles/main';
 .users__summary {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+  @include largeScreen {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .users {
@@ -15,7 +19,7 @@
 }
 
 .card {
-  width: 240px;
+  max-width: 240px;
   height: 160px;
   display: flex;
   flex-direction: column;
@@ -25,7 +29,7 @@
   border: 1px solid rgba(33, 63, 125, 0.06);
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
-  padding: 2%;
+  padding: 4%;
   margin-bottom: 40px;
   p {
     font-style: normal;
@@ -53,9 +57,26 @@
 }
 .table {
   color: $secondary-text;
+  overflow-x: auto;
 }
 
 .filters {
   display: flex;
   justify-content: space-between;
+}
+.dropdown__menu {
+  position: absolute;
+  width: 270px;
+  height: 0;
+  left: 0;
+  top: 488px;
+
+  background: #ffffff;
+  border: 1px solid rgba(84, 95, 125, 0.14);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+}
+.select {
+  background: rgba(33, 63, 125, 0.1);
+  border-radius: 4px;
+  padding: 8px 16px;
 }

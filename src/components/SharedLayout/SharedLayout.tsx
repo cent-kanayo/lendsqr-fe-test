@@ -1,12 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import './_layout.scss';
 const SharedLayout = () => {
   return (
     <div>
       <Header />
-      <div className="layout">
-        <Sidebar />
+      <div className="layout ">
+        <div className="sidebar__container">
+          <Sidebar />
+        </div>
         <div className="layout__outlet">
           <Outlet />
         </div>

@@ -14,29 +14,46 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 0 20px;
+
+    .header__logo {
+      img {
+        width: 100px;
+      }
+    }
 
     .header__input {
-      width: 400px;
+      width: 40px;
       height: 40px;
-      border: 2px solid rgba(84, 95, 125, 0.15);
-      border-radius: 5px;
+      border-radius: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @include tabletSize {
+        width: 400px;
+        border: 2px solid rgba(84, 95, 125, 0.15);
+        border-radius: 8px;
+      }
       input {
         border: none;
         outline: none;
-        flex-grow: 1;
         padding: 8px 16px;
+        display: none;
+        @include tabletSize {
+          display: block;
+          flex-grow: 1;
+        }
       }
       span {
         background-color: $tertiary-text;
-        padding: 5px;
         height: 100%;
         padding: 0 16px;
         display: grid;
         place-items: center;
-        border-radius: 0 5px 5px 0;
+        border-radius: 100%;
+        @include tabletSize {
+          border-radius: 0 5px 5px 0;
+        }
       }
     }
   }
@@ -46,6 +63,14 @@
     justify-content: end;
     align-items: center;
     gap: 0 40px;
+    .docs {
+      display: none;
+      @include largeScreen {
+        display: block;
+        display: flex;
+        gap: 0 40px;
+      }
+    }
     .user-icon {
       border-radius: 100%;
     }
@@ -65,30 +90,50 @@
   }
 }
 .sidebar {
+  display: none;
   width: 283px;
   background: #ffffff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
-  gap: 20px;
-
+  #{&}__header {
+    padding: 0 16px;
+    margin-top: 40px;
+    color: $primary-text;
+  }
+  .sidebar__inactive {
+    opacity: 0.7;
+    padding: 16px;
+  }
+  .sidebar__active {
+    opacity: 1;
+    background-color: #f3fcfc;
+    border-left: 2px solid $tertiary-text;
+  }
   #{&}__links {
     display: flex;
     flex-direction: column;
-    gap: 20px 0;
+    // gap: 20px 0;
     h5 {
       font-size: 12;
       text-transform: uppercase;
       color: $primary-text;
+      font-weight: 500;
+      margin-bottom: 10px;
+      padding: 0 16px;
     }
   }
 
   #{&}__sublinks {
     display: flex;
     flex-direction: column;
-    gap: 20px 0;
+    // gap: 20px 0;
     margin-bottom: 30px;
     color: $secondary-text;
     span {
       font-size: 16px;
+      font-weight: 400;
     }
+  }
+  @include largeScreen {
+    display: block;
   }
 }
