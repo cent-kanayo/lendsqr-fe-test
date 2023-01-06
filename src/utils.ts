@@ -21,3 +21,9 @@ export default paginate;
 export const customFetch = axios.create({
   baseURL: 'https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1',
 });
+
+export const fetchUsersFromLocalStorage = () => {
+  const users = localStorage.getItem('Users');
+  const result = users ? JSON.parse(users) : [];
+  return result;
+};

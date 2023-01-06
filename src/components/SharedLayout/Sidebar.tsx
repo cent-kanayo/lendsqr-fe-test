@@ -33,7 +33,7 @@ const Sidebar = () => {
               <div className="sidebar__sublinks">
                 {links.map(({ path, text, icon }) => {
                   return (
-                    <div className="flex">
+                    <div key={text} className="flex">
                       <img src={icon} alt="Link icon" />
                       <span>{text}</span>
                     </div>

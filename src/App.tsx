@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react';
 import { Users } from '../usertypes';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login, SharedLayout, UsersPage, UserDetails } from './components';
-
+import { fetchUsersFromLocalStorage } from './utils';
 import paginate, { customFetch } from './utils';
 
 function App() {
-  const [users, setUsers] = useState([] as Users[][]);
+  const [numberPerPage, setNumberPerPage] = useState(10);
   const [page, setPage] = useState(0);
+  const [users, setUsers] = useState(
+    paginate(fetchUsersFromLocalStorage(), numberPerPage) as Users[][]
+  );
   const [paginated, setPaginated] = useState(users[page]);
+  const [userInput, setUserInput] = useState(numberPerPage);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -27,8 +31,7 @@ function App() {
                 : 'pending',
           };
         });
-
-        setUsers(paginate(modifiedData, 9));
+        localStorage.setItem('Users', JSON.stringify(modifiedData));
       } catch (error: any) {
         console.log(error.message);
       }
@@ -39,6 +42,9 @@ function App() {
   useEffect(() => {
     setPaginated(users[page]);
   }, [page]);
+  useEffect(() => {
+    setNumberPerPage(userInput);
+  }, [numberPerPage]);
   return (
     <BrowserRouter>
       <Routes>

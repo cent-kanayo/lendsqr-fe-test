@@ -19,6 +19,36 @@ select {
 .text-color3 {
   color: $tertiary-text;
 }
+.pending {
+  background-color: #fdf7e5;
+  color: #e6b000;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border-radius: 100px;
+  text-align: center;
+}
+.active {
+  background-color: #f3fcf6;
+  color: #39cd62;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-align: center;
+}
+.blacklisted {
+  background-color: #fce6eb;
+  color: #e4033b;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-align: center;
+}
+.inactive {
+  background-color: #f5f5f7;
+  color: #545f7d;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-align: center;
+}
+
 .btn__blacklist {
   color: #e4033b;
   background-color: transparent;
@@ -59,4 +89,8 @@ select {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.table__data {
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
 }
