@@ -33,6 +33,10 @@ select {
   color: #39cdcc;
 }
 
+.margin-bottom {
+  margin-bottom: 30px;
+}
+
 .pending {
   background-color: #fdf7e5;
   color: #e6b000;
@@ -109,7 +113,13 @@ select {
   justify-content: space-between;
 }
 
-.flexCol {
+.flex-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-col {
   display: flex;
   flex-direction: column;
   gap: 20px;

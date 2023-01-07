@@ -1,4 +1,4 @@
-$tablet: 900px;
+$tablet: 800px;
 $large-screen: 1200px;
 $primary-text: #213f7d;
 $secondary-text: #545f7d;
@@ -13,7 +13,11 @@ $bg-color: #fbfbfb;
   align-items: center;
   gap: 10px;
 }
-
+@mixin flexItemsCenter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 @mixin tabletSize {
   @media (min-width: $tablet) {
     @content;

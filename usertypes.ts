@@ -37,6 +37,8 @@ export interface Guarantor {
   phoneNumber: string;
   gender: string;
   address: string;
+  relationship?: string;
+  email: string;
 }
 
 export interface Profile {

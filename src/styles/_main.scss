@@ -19,6 +19,9 @@ select {
 .text-color3 {
   color: $tertiary-text;
 }
+.margin-bottom {
+  margin-bottom: 30px;
+}
 .pending {
   background-color: #fdf7e5;
   color: #e6b000;
@@ -85,7 +88,10 @@ select {
   @include flexItems;
   justify-content: space-between;
 }
-.flexCol {
+.flex-center {
+  @include flexItemsCenter;
+}
+.flex-col {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -96,4 +102,17 @@ select {
 }
 tr {
   font-size: 14px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 20px;
+  @include tabletSize {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include largeScreen {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 80px;
+  }
 }

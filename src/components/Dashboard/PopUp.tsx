@@ -1,4 +1,4 @@
-import UserInfoCard from './UserInfoCard';
+import UserInfoCard from '../UserPage/UserInfoCard';
 import User1 from '../../assets/user-1.png';
 import User2 from '../../assets/user-2.png';
 import User3 from '../../assets/user-3.png';
@@ -9,14 +9,14 @@ import DropDown from '../../assets/switch-dropdown.png';
 
 import { Users } from '../../../usertypes';
 
-import UsersTable from './UsersTable';
+import UsersTable from '../UserPage/UsersTable';
 
 export interface User {
   users: Users[];
   setPage: (page: number) => void;
 }
 
-const UsersPage = ({ users, setPage }: User) => {
+const PopUp = ({ users, setPage }: User) => {
   return (
     <div className="users">
       <h4 className="text-color1">Users</h4>
@@ -71,4 +71,4 @@ const UsersPage = ({ users, setPage }: User) => {
   );
 };
 
-export default UsersPage;
+export default PopUp;

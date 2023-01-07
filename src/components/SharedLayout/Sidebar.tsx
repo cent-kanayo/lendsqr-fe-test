@@ -27,7 +27,7 @@ const Sidebar = () => {
           </span>
           <span>Dashboard</span>
         </div>
-        <div className="">
+        <div className="sidebar__nav-container">
           {sidebarLinks.map(({ links, title, id }) => {
             return (
               <div key={id} className="sidebar__links">

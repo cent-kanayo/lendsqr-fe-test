@@ -27,3 +27,9 @@ export const fetchUsersFromLocalStorage = () => {
   const result = users ? JSON.parse(users) : [];
   return result;
 };
+
+export const fetchSingleUserFromLocalStorage = () => {
+  const user = localStorage.getItem('User');
+  const result = user ? JSON.parse(user) : {};
+  return result;
+};

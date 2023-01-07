@@ -2,16 +2,12 @@ import { User } from './UsersPage';
 import { Table } from 'react-bootstrap';
 import FilterIcon from '../../assets/filter-results-button.png';
 import Dots from '../../assets/dots.png';
+import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 const UsersTable = ({ users }: User) => {
   return (
     <div className="table">
-      <Table
-        responsive
-        width="100%"
-        cellSpacing="20px"
-        bordered={true}
-        cellPadding="10px"
-      >
+      <Table responsive width="100%" cellSpacing="20px" cellPadding="10px">
         <thead>
           <tr style={{ borderBottom: '1px solid gray' }}>
             <th align="left">
@@ -73,7 +69,7 @@ const UsersTable = ({ users }: User) => {
                 <td>{`${user.profile.firstName} ${user.profile.lastName}`}</td>
                 <td>{user.email}</td>
                 <td>{user.phoneNumber}</td>
-                <td>{user.createdAt.toLocaleLowerCase()}</td>
+                <td>{user.createdAt}</td>
                 <td
                   className={
                     user.status === 'active'
@@ -88,7 +84,9 @@ const UsersTable = ({ users }: User) => {
                   {user.status}
                 </td>
                 <td align="right">
-                  <img src={Dots} alt="toggle" />
+                  <Link to={`/users/${user.id}`}>
+                    <img src={Dots} alt="toggle" />
+                  </Link>
                 </td>
               </tr>
             );
