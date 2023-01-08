@@ -167,6 +167,7 @@
   @include largeScreen {
     display: block;
     position: static;
+    transform: translate(0);
   }
 }
 
