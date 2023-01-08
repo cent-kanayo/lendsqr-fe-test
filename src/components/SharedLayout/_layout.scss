@@ -17,6 +17,11 @@
     gap: 0 20px;
 
     .header__logo {
+      .header__toggle-btn {
+        @include largeScreen {
+          display: none;
+        }
+      }
       img {
         width: 100px;
       }
@@ -95,7 +100,7 @@
   #{&}__outlet {
     background-color: #fbfbfb;
     width: 100%;
-    padding: 3% 5%;
+    padding: 3% 2%;
   }
 }
 .sidebar {
@@ -103,6 +108,12 @@
   width: 283px;
   background: #ffffff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  transform: translate(-100%);
+  transition: all 0.5s linear;
+  a {
+    text-decoration: none;
+    color: $secondary-text;
+  }
   #{&}__header {
     padding: 0 16px;
     margin: 30px 0;
@@ -114,11 +125,19 @@
   .sidebar__inactive {
     opacity: 0.7;
     padding: 16px;
+    transition: all 0.25s ease-in-out;
+    &:hover {
+      opacity: 1;
+      background-color: #f3fcfc;
+      border-left: 2px solid $tertiary-text;
+      padding: 16px;
+    }
   }
   .sidebar__active {
     opacity: 1;
     background-color: #f3fcfc;
     border-left: 2px solid $tertiary-text;
+    padding: 16px;
   }
   #{&}__links {
     display: flex;
@@ -147,5 +166,13 @@
   }
   @include largeScreen {
     display: block;
+    position: static;
   }
+}
+
+.show-sidebar {
+  display: block;
+  transform: translate(0);
+  position: absolute;
+  z-index: 99999;
 }

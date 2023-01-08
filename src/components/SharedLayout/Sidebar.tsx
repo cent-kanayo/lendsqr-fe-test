@@ -3,14 +3,13 @@ import Dropdown from '../../assets/switch-dropdown.png';
 import Home from '../../assets/home.png';
 import Signout from '../../assets/sign.png';
 import { sidebarLinks } from './sharedutils';
-
 import '../../styles/_main.scss';
 import './_layout.scss';
 import { NavLink } from 'react-router-dom';
-
-const Sidebar = () => {
+import { SidebarProp } from './SharedLayout';
+const Sidebar = ({ showSidebar, setShowSidebar }: SidebarProp) => {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${showSidebar && 'show-sidebar'}`}>
       <div className="flexCol">
         <div className="sidebar__header flex">
           <span>
@@ -21,12 +20,18 @@ const Sidebar = () => {
             <img src={Dropdown} alt="Dropdown icon" />
           </span>
         </div>
-        <div className="flex sidebar__inactive">
+        <NavLink
+          to="/"
+          className={({ isActive }: { isActive: boolean }): string =>
+            isActive ? 'flex sidebar__active' : 'flex sidebar__inactive'
+          }
+          onClick={() => setShowSidebar!(false)}
+        >
           <span>
             <img src={Home} alt="Home icon" />
           </span>
           <span>Dashboard</span>
-        </div>
+        </NavLink>
         <div className="sidebar__nav-container">
           {sidebarLinks.map(({ links, title, id }) => {
             return (
@@ -35,10 +40,23 @@ const Sidebar = () => {
                 <div className="sidebar__sublinks">
                   {links.map(({ path, text, icon }) => {
                     return (
-                      <div key={text} className="flex sidebar__inactive">
+                      <NavLink
+                        to={`${path}`}
+                        key={text}
+                        className={({
+                          isActive,
+                        }: {
+                          isActive: boolean;
+                        }): string =>
+                          isActive
+                            ? 'flex sidebar__active'
+                            : 'flex sidebar__inactive'
+                        }
+                        onClick={() => setShowSidebar!(false)}
+                      >
                         <img src={icon} alt="Link icon" />
                         <span>{text}</span>
-                      </div>
+                      </NavLink>
                     );
                   })}
                 </div>
@@ -51,9 +69,9 @@ const Sidebar = () => {
           <span>
             <img src={Signout} alt="Sign out icon" />
           </span>
-          <span>Logout</span>
+          <span className="text-color2">Logout</span>
         </div>
-        <p>v1.2.0</p>
+        <p className="padding text-color2">v1.2.0</p>
       </div>
     </aside>
   );

@@ -4,17 +4,21 @@ import Dropdown from '../../assets/drop.png';
 import Notification from '../../assets/notification.png';
 import SearchIcon from '../../assets/search.png';
 import './_layout.scss';
+import { SidebarProp } from './SharedLayout';
 
-const Header = () => {
+const Header = ({ setShowSidebar }: SidebarProp) => {
   return (
     <header className="header">
       <div className="header__l">
         <div className="header__logo flex">
-          <div>
+          <button
+            className="header__toggle-btn "
+            onClick={() => setShowSidebar!((prev) => !prev)}
+          >
             <span>|</span>
             <span>|</span>
             <span>|</span>
-          </div>
+          </button>
           <img src={Logo} alt="Brand Logo" />
         </div>
         <div className="header__input">

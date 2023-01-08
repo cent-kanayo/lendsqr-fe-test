@@ -57,11 +57,21 @@
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   margin-bottom: 20px;
+  position: relative;
+  a {
+    text-decoration: none;
+    color: $secondary-text;
+  }
 }
 .table {
   color: $secondary-text;
   overflow-x: auto;
+  // position: relative;
 }
+
+// tbody tr td {
+//   border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+// }
 
 .filters {
   display: flex;
@@ -77,19 +87,34 @@
     gap: 0;
   }
 }
-.dropdown__menu {
+.table__filters {
   position: absolute;
   width: 270px;
-  height: 0;
+  height: 600px;
   left: 0;
-  top: 488px;
-
+  top: 85px;
   background: #ffffff;
   border: 1px solid rgba(84, 95, 125, 0.14);
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  z-index: 999;
+  padding: 16px;
 }
 .select {
   background: rgba(33, 63, 125, 0.1);
   border-radius: 4px;
   padding: 8px 16px;
+}
+
+.user-details__modal {
+  position: absolute;
+  width: 180px;
+  height: 130px;
+  right: -10px;
+  top: 100px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(84, 95, 125, 0.04);
+  box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  z-index: 9999;
 }

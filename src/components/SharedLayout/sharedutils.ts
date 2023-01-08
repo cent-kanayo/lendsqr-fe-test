@@ -24,7 +24,7 @@ export const sidebarLinks = [
     id: 1,
     title: 'customers',
     links: [
-      { icon: UserFriends, text: 'Users', path: '/' },
+      { icon: UserFriends, text: 'Users', path: 'users' },
       { icon: UserGroup, text: 'Guarantors', path: 'guarantors' },
       { icon: Ego, text: 'Loans', path: 'loans' },
       { icon: Shake, text: 'Decision Models', path: 'decision-models' },

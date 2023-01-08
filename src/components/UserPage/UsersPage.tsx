@@ -10,6 +10,9 @@ import DropDown from '../../assets/switch-dropdown.png';
 import { Users } from '../../../usertypes';
 
 import UsersTable from './UsersTable';
+import { useRef, useState } from 'react';
+import FormModal from './FormModal';
+import UserDetailsModal from './UserDetailsModal';
 
 export interface User {
   users: Users[];
@@ -17,6 +20,9 @@ export interface User {
 }
 
 const UsersPage = ({ users, setPage }: User) => {
+  const [showFilter, setShowFilter] = useState<boolean>(false);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
+  const userInput = useRef(null);
   return (
     <div className="users">
       <h4 className="text-color1">Users</h4>
@@ -29,17 +35,24 @@ const UsersPage = ({ users, setPage }: User) => {
       <div className="table__container">
         <UsersTable
           users={users}
-          setPage={function (page: number): void {
-            throw new Error('Function not implemented.');
-          }}
+          showDetails={showDetails}
+          setShowFilter={setShowFilter}
+          setShowDetails={setShowDetails}
         />
+        {showFilter && (
+          <div className="table__filters">
+            <FormModal />
+          </div>
+        )}
       </div>
       <div className="filters">
         <div className="flex text-color2">
           <span>Showing</span>
           <div className="flex text-color1 select">
-            <select name="" id="">
-              <option value="">100</option>
+            <select name="" id="" value="10">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">40</option>
             </select>
             <span>
               <img src={DropDown} alt="Drop down icon" />

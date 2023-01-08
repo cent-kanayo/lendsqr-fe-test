@@ -3,6 +3,11 @@
 .bottom-margin {
   margin-bottom: 8px;
 }
+.user-details-page {
+  a {
+    text-decoration: none;
+  }
+}
 .user-details__header {
   h4 {
     font-size: 16px;
@@ -96,7 +101,15 @@
     margin-bottom: 10px;
   }
 }
+.info-div {
+  display: flex;
+  flex-direction: column;
+}
 .container-divs {
   padding: 20px 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+}
+
+.guarantor {
+  padding: 20px 0;
 }

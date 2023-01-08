@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Login, SharedLayout, UsersPage, UserDetails } from './components';
 import { fetchUsersFromLocalStorage } from './utils';
 import paginate, { customFetch } from './utils';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   const [numberPerPage, setNumberPerPage] = useState(10);
@@ -13,6 +14,8 @@ function App() {
   );
   const [paginated, setPaginated] = useState(users[page]);
   const [userInput, setUserInput] = useState(numberPerPage);
+
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -49,9 +52,18 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="login" element={<Login />} />
-        <Route path="/" element={<SharedLayout />}>
+        <Route
+          path="/"
+          element={
+            <SharedLayout
+              showSidebar={showSidebar}
+              setShowSidebar={setShowSidebar}
+            />
+          }
+        >
+          <Route index element={<Dashboard />} />
           <Route
-            index
+            path="users"
             element={<UsersPage users={paginated} setPage={setPage} />}
           />
           <Route path="users/:id" element={<UserDetails />} />
