@@ -1,8 +1,19 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
 
-const FormModal = () => {
+const FormModal = ({
+  location,
+}: {
+  location: { left: number; top: number };
+}) => {
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    const modal = formRef.current;
+    modal.style!.left = `${location.left}px`;
+    modal.style.top = `${location.top}px`;
+  }, [location.left, location.top]);
   return (
-    <>
+    <div className="table__filters" ref={formRef}>
       <form className="flex-col">
         <div className="filter-form">
           <label htmlFor="Organization">Organization</label>
@@ -37,7 +48,7 @@ const FormModal = () => {
           <button>Filter</button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

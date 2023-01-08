@@ -16,6 +16,7 @@ function App() {
   const [userInput, setUserInput] = useState(numberPerPage);
 
   const [showSidebar, setShowSidebar] = useState(false);
+  const [modalLocation, setModalLocation] = useState({ left: 0, top: 0 });
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -64,7 +65,13 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route
             path="users"
-            element={<UsersPage users={paginated} setPage={setPage} />}
+            element={
+              <UsersPage
+                users={paginated}
+                location={modalLocation}
+                setModalLocation={setModalLocation}
+              />
+            }
           />
           <Route path="users/:id" element={<UserDetails />} />
         </Route>

@@ -28,7 +28,7 @@ const UserDetails = () => {
   return (
     <section>
       <div className="user-details-page flex">
-        <Link to="/">
+        <Link to="/users">
           <div className="margin-bottom flex">
             <span>
               <img src={Arrow} alt="Back icon" />

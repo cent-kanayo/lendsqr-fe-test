@@ -10,16 +10,17 @@ import DropDown from '../../assets/switch-dropdown.png';
 import { Users } from '../../../usertypes';
 
 import UsersTable from './UsersTable';
-import { useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useRef, useState } from 'react';
 import FormModal from './FormModal';
 import UserDetailsModal from './UserDetailsModal';
 
 export interface User {
   users: Users[];
-  setPage: (page: number) => void;
+  location?: { left: number; top: number };
+  setModalLocation: Dispatch<SetStateAction<{ left: number; top: number }>>;
 }
 
-const UsersPage = ({ users, setPage }: User) => {
+const UsersPage = ({ users, location, setModalLocation }: User) => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const userInput = useRef(null);
@@ -38,12 +39,9 @@ const UsersPage = ({ users, setPage }: User) => {
           showDetails={showDetails}
           setShowFilter={setShowFilter}
           setShowDetails={setShowDetails}
+          setModalLocation={setModalLocation}
         />
-        {showFilter && (
-          <div className="table__filters">
-            <FormModal />
-          </div>
-        )}
+        {showFilter && <FormModal location={location} />}
       </div>
       <div className="filters">
         <div className="flex text-color2">
@@ -67,7 +65,7 @@ const UsersPage = ({ users, setPage }: User) => {
             </button>
           </div>
           {users?.slice(0, 3).map((_, index) => {
-            return <button onClick={() => setPage(index)}>{index + 1}</button>;
+            return <button>{index + 1}</button>;
           })}
           <span>...</span>
           {users?.slice(users.length - 2).map((_, index) => {
