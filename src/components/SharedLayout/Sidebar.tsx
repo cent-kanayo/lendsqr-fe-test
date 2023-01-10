@@ -27,7 +27,7 @@ const Sidebar = () => {
           className={({ isActive }: { isActive: boolean }): string =>
             isActive ? 'flex sidebar__active' : 'flex sidebar__inactive'
           }
-          onClick={() => setShowSidebar!(false)}
+          onClick={() => setShowSidebar(false)}
         >
           <span>
             <img src={Home} alt="Home icon" />

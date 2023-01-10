@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
 import { Users } from './usertypes';
 
 export interface AppContext {
@@ -9,10 +8,10 @@ export interface AppContext {
   userInput: number;
   showSidebar: boolean;
   modalLocation: { left: number; top: number };
-  setModalLocation: Dispatch<SetStateAction<{ left: number; top: number }>>;
-  setPage: Dispatch<SetStateAction<number>>;
+  setModalLocation: (location: { left: number; top: number }) => void;
+  setPage: (page: number) => void;
   nextPage: () => void;
   prevPage: () => void;
   updateNumPerPage: (inputValue: number) => void;
-  setShowSidebar: Dispatch<SetStateAction<boolean>>;
+  setShowSidebar: (prev: boolean | any) => void;
 }

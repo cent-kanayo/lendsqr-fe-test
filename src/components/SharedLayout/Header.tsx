@@ -10,7 +10,7 @@ import { useEffect, useRef } from 'react';
 const Header = () => {
   const { setShowSidebar, showSidebar } = useGlobalContext();
 
-  const toggleRef = useRef<React.MutableRefObject<undefined | string>>();
+  const toggleRef = useRef<HTMLButtonElement>();
   const handleClick = () => {
     toggleRef.current.classList.toggle('open');
 
