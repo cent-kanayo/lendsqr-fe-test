@@ -1,19 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import EyeIcon from '../../assets/eye.png';
 import CheckUser from '../../assets/check-user.png';
 import DeleteUSer from '../../assets/delete-user.png';
-import { Users } from '../../Types/usertypes';
 
 const UserDetailsModal = ({ userId }: { userId: string }) => {
+  const navigate = useNavigate();
   return (
     <div className="user-details__modal flex-col">
-      <Link to={`/users/${userId}`} className="flex">
+      <button
+        className="flex"
+        onClick={() => {
+          navigate(`/users/${userId}`);
+        }}
+      >
         <span>
           <img src={EyeIcon} alt="" />
         </span>
         <span>View Details</span>
-      </Link>
+      </button>
       <div className="flex">
         <span>
           <img src={DeleteUSer} alt="" />

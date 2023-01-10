@@ -9,8 +9,8 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="users" element={<UsersPage />} />
-          <Route path="users/:id" element={<UserDetails />} />
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/users/:id" element={<UserDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>
