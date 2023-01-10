@@ -23,11 +23,6 @@ const UsersTable = ({ setShowFilter }: Prop) => {
     }
   };
 
-  const onHideUserSelectModal = () => {
-    console.log('here');
-    setUserSelectModal(null);
-  };
-
   const { paginated: users } = useGlobalContext();
   const showModalForm = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -46,52 +41,52 @@ const UsersTable = ({ setShowFilter }: Prop) => {
         <thead>
           <tr style={{ borderBottom: '1px solid gray' }}>
             <th align="left">
-              <div className="flex">
+              <span className="flex">
                 <span>Organization</span>
                 <button type="button" onClick={showModalForm}>
                   <img src={FilterIcon} alt="filter icon" />
                 </button>
-              </div>
+              </span>
             </th>
             <th align="left">
-              <div className="flex">
+              <span className="flex">
                 <span>Username</span>
                 <button type="button" onClick={showModalForm}>
                   <img src={FilterIcon} alt="filter icon" />
                 </button>
-              </div>
+              </span>
             </th>
             <th align="left">
-              <div className="flex">
+              <span className="flex">
                 <span>Email</span>
                 <button type="button" onClick={showModalForm}>
                   <img src={FilterIcon} alt="filter icon" />
                 </button>
-              </div>
+              </span>
             </th>
             <th align="left">
-              <div className="flex">
+              <span className="flex">
                 <span>Phone number</span>
                 <button type="button" onClick={showModalForm}>
                   <img src={FilterIcon} alt="filter icon" />
                 </button>
-              </div>
+              </span>
             </th>
             <th align="left">
-              <div className="flex">
+              <span className="flex">
                 <span>Date Joined</span>
                 <button type="button" onClick={showModalForm}>
                   <img src={FilterIcon} alt="filter icon" />
                 </button>
-              </div>
+              </span>
             </th>
             <th align="left">
-              <div className="flex">
+              <span className="flex">
                 <span>Status</span>
                 <button type="button" onClick={showModalForm}>
                   <img src={FilterIcon} alt="filter icon" />
                 </button>
-              </div>
+              </span>
             </th>
             <th></th>
           </tr>
@@ -130,9 +125,9 @@ const UsersTable = ({ setShowFilter }: Prop) => {
                   />
                 </td>
                 {userSelectModal === user.id && (
-                  <div>
+                  <span>
                     <UserDetailsModal userId={user.id} />
-                  </div>
+                  </span>
                 )}
               </tr>
             );

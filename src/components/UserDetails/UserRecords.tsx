@@ -2,9 +2,12 @@ import { SingleUser } from '../../Types/singleUser';
 
 interface Prop {
   user: SingleUser;
+  loading: boolean;
 }
 
-const UserRecords = ({ user }: Prop) => {
+const UserRecords = ({ user, loading }: Prop) => {
+  if (loading) return <h3 className="text-color1">Loading...</h3>;
+
   return (
     <div className="user-records">
       <div className="user-records__personal container-divs">
