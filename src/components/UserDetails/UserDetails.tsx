@@ -4,7 +4,7 @@ import { Users } from '../../Types/usertypes';
 import Arrow from '../../assets/arrowL.png';
 import Startfill from '../../assets/starfill.png';
 import Startsolid from '../../assets/starsolid.png';
-import { customFetch, fetchSingleUserFromLocalStorage } from '../../utils';
+import { customFetch } from '../../utils';
 
 import UserRecords from './UserRecords';
 
@@ -86,7 +86,7 @@ const UserDetails = () => {
           <button className="user-details__btns">App and System</button>
         </div>
       </div>
-      <UserRecords />
+      <UserRecords user={user} />
     </section>
   );
 };

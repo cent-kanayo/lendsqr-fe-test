@@ -6,8 +6,7 @@ interface Prop {
   user: Users;
 }
 
-const UserRecords = () => {
-  const [user, setUser] = useState<Users>(fetchSingleUserFromLocalStorage());
+const UserRecords = ({ user }: Prop) => {
   return (
     <div className="user-records">
       <div className="user-records__personal container-divs">
@@ -39,7 +38,7 @@ const UserRecords = () => {
           </div>
           <div className="margin-bottom">
             <p>Children</p>
-            <h6>{`${user.profile.firstName} ${user.profile.lastName}`}</h6>
+            <h6>{`${user.profile?.firstName} ${user.profile?.lastName}`}</h6>
           </div>
           <div className="margin-bottom">
             <p>Type of residence</p>
@@ -102,7 +101,7 @@ const UserRecords = () => {
         <div className="grid-4">
           <div className="margin-bottom">
             <p>full Name</p>
-            <h6>{`${user.guarantor.firstName} ${user.guarantor.lastName}`}</h6>
+            <h6>{`${user.guarantor?.firstName} ${user.guarantor?.lastName}`}</h6>
           </div>
           <div className="margin-bottom">
             <p>Phone Number</p>
