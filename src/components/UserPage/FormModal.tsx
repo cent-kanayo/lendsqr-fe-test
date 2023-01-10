@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useGlobalContext } from '../../Context/context';
+import Dropdown from '../../assets/switch-dropdown.png';
 
 const FormModal = () => {
   const { modalLocation: location } = useGlobalContext();
@@ -15,11 +16,14 @@ const FormModal = () => {
       <form className="flex-col">
         <div className="filter-form">
           <label htmlFor="Organization">Organization</label>
-          <select className="form-control" placeholder="Organization">
-            <option value="">Select</option>
-          </select>
+          <div className="select flex-btw">
+            <select className="form-control" placeholder="Organization">
+              <option value="">Select</option>
+            </select>
+            <img src={Dropdown} alt="drop down icon" />
+          </div>
         </div>
-        <div className="filter-from">
+        <div className="filter-form">
           <label htmlFor="Username">Username</label>
           <input type="text" name="username" placeholder="Username" />
         </div>
@@ -37,13 +41,16 @@ const FormModal = () => {
         </div>
         <div className="filter-form">
           <label htmlFor="status">Status</label>
-          <select name="status">
-            <option value="">Select</option>
-          </select>
+          <div className="select flex-btw ">
+            <select name="status">
+              <option value="">Select</option>
+            </select>
+            <img src={Dropdown} alt="drop down icon" />
+          </div>
         </div>
         <div className="flex-btw">
-          <button>Reset</button>
-          <button>Filter</button>
+          <button className="reset">Reset</button>
+          <button className="filter">Filter</button>
         </div>
       </form>
     </div>

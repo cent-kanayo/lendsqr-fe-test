@@ -3,6 +3,7 @@ import Dots from '../../assets/dots.png';
 import { Dispatch, SetStateAction, useState } from 'react';
 import UserDetailsModal from './UserDetailsModal';
 import { useGlobalContext } from '../../Context/context';
+import moment from 'moment';
 
 type Prop = {
   showDetails: boolean;
@@ -33,7 +34,7 @@ const UsersTable = ({ setShowFilter }: Prop) => {
   ) => {
     const tempBtn = event.currentTarget.getBoundingClientRect();
 
-    const left = tempBtn.left - 300;
+    const left = tempBtn.left - 440;
     const top = 100;
 
     setShowFilter((prev) => !prev);
@@ -41,7 +42,7 @@ const UsersTable = ({ setShowFilter }: Prop) => {
   };
   return (
     <div className="table">
-      <table cellSpacing="20px">
+      <table cellPadding="20px 40px" cellSpacing="20px">
         <thead>
           <tr style={{ borderBottom: '1px solid gray' }}>
             <th align="left">
@@ -96,42 +97,44 @@ const UsersTable = ({ setShowFilter }: Prop) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, index) => {
+          {users.map((user) => {
             return (
-              <>
-                <tr key={user.id} className="table__data">
-                  <td>{user.orgName}</td>
-                  <td>{`${user.profile.firstName} ${user.profile.lastName}`}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phoneNumber}</td>
-                  <td>{user.createdAt}</td>
-                  <td
-                    className={
-                      user.status === 'active'
-                        ? 'active'
-                        : user.status === 'inactive'
-                        ? 'inactive'
-                        : user.status === 'pending'
-                        ? 'pending'
-                        : 'blacklisted'
-                    }
-                  >
-                    {user.status}
-                  </td>
-                  <td align="right">
-                    <img
-                      src={Dots}
-                      alt="toggle"
-                      onClick={() => onShowUserSelectModal(user.id || '')}
-                    />
-                  </td>
-                  {userSelectModal === user.id && (
-                    <div>
-                      <UserDetailsModal userId={user.id} />
-                    </div>
+              <tr key={user.id} className="table__data">
+                <td>{user.orgName}</td>
+                <td>{`${user.profile.firstName} ${user.profile.lastName}`}</td>
+                <td>{user.email}</td>
+                <td>{user.phoneNumber}</td>
+                <td>
+                  {moment(new Date(user?.createdAt)).format(
+                    'MMMM Do YYYY, h:mm:ss a'
                   )}
-                </tr>
-              </>
+                </td>
+                <td
+                  className={
+                    user.status === 'active'
+                      ? 'active'
+                      : user.status === 'inactive'
+                      ? 'inactive'
+                      : user.status === 'pending'
+                      ? 'pending'
+                      : 'blacklisted'
+                  }
+                >
+                  {user.status}
+                </td>
+                <td align="right">
+                  <img
+                    src={Dots}
+                    alt="toggle"
+                    onClick={() => onShowUserSelectModal(user.id || '')}
+                  />
+                </td>
+                {userSelectModal === user.id && (
+                  <div>
+                    <UserDetailsModal userId={user.id} />
+                  </div>
+                )}
+              </tr>
             );
           })}
         </tbody>

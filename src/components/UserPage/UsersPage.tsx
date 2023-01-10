@@ -16,14 +16,8 @@ const UsersPage = () => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [selectOptions, setSelectOption] = useState(10);
 
-  const {
-    users,
-    setModalLocation,
-    prevPage,
-    nextPage,
-    updateNumPerPage,
-    setPage,
-  } = useGlobalContext();
+  const { users, prevPage, nextPage, updateNumPerPage, setPage } =
+    useGlobalContext();
 
   return (
     <div className="users">
@@ -40,15 +34,10 @@ const UsersPage = () => {
           setShowFilter={setShowFilter}
           setShowDetails={setShowDetails}
         />
-        {showFilter && (
-          <>
-            <FormModal />
-            <FormModal />
-          </>
-        )}
+        {showFilter && <FormModal />}
       </div>
       <div className="filters">
-        <div className="flex text-color2">
+        <div className="select-filters text-color2">
           <span>Showing</span>
           <div className="flex text-color1 select">
             <select
