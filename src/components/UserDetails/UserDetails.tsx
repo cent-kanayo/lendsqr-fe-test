@@ -11,7 +11,7 @@ import UserRecords from './UserRecords';
 
 import './_userdetails.scss';
 const UserDetails = () => {
-  const [user, setUser] = useState<Users>(fetchSingleUserFromLocalStorage());
+  const [user] = useState<Users>(fetchSingleUserFromLocalStorage());
   const { id } = useParams();
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const UserDetails = () => {
     };
     fetchSingleUser();
   }, [id]);
+  if (!user) return <h1>Loading...</h1>;
   return (
     <section>
       <div className="user-details-page flex">
