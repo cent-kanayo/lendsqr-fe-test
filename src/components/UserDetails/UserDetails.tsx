@@ -10,14 +10,15 @@ import UserRecords from './UserRecords';
 
 import './_userdetails.scss';
 const UserDetails = () => {
-  const [user] = useState<Users>(fetchSingleUserFromLocalStorage());
+  const [user, setUser] = useState(null);
+
   const { id } = useParams();
 
   useEffect(() => {
     const fetchSingleUser = async () => {
       try {
         const { data } = await customFetch.get<Promise<Users>>(`/users/${id}`);
-        localStorage.setItem('User', JSON.stringify(data));
+        setUser(data);
       } catch (error: any) {
         console.log(error.message);
       }
