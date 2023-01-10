@@ -228,6 +228,7 @@ tr {
 }
 .login .login__r .form-control button {
   color: #39cdcc;
+  max-width: 447px;
 }
 .login .login__r .password {
   color: #39cdcc;
