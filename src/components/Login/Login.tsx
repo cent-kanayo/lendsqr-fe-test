@@ -37,6 +37,7 @@ const Login = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword((prev) => !prev)}
+                data-test-id="toggle"
               >
                 {showPassword ? 'HIDE' : 'SHOW'}
               </button>

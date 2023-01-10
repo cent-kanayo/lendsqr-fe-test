@@ -92,7 +92,7 @@ const UsersTable = ({ setShowFilter }: Prop) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => {
+          {users?.map((user) => {
             return (
               <tr key={user.id} className="table__data">
                 <td>{user.orgName}</td>
