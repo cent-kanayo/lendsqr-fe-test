@@ -50,7 +50,7 @@ const UserDetails = () => {
         <div className="user-details__info flex">
           <div className="user-image flex">
             <img
-              src={user?.profile.avatar}
+              src={user?.profile?.avatar}
               alt="User Avatar"
               className="user__image"
             />
