@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Users } from '../../Types/usertypes';
 import Arrow from '../../assets/arrowL.png';
-import Avatar from '../../assets/avatar.png';
 import Startfill from '../../assets/starfill.png';
 import Startsolid from '../../assets/starsolid.png';
 import { customFetch, fetchSingleUserFromLocalStorage } from '../../utils';
@@ -51,7 +50,7 @@ const UserDetails = () => {
         <div className="user-details__info flex">
           <div className="user-image flex">
             <img
-              src={user?.profile.avatar ?? Avatar}
+              src={user?.profile.avatar}
               alt="User Avatar"
               className="user__image"
             />
