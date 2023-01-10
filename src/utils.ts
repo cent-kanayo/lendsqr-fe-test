@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Users } from '../usertypes';
+import { Users } from './Types/usertypes';
 
 const paginate = (data: Users[], userInput: number) => {
   let itemsPerPage = userInput;

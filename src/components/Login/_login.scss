@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 .padding {
-  padding: 5% 7%;
+  padding: 5% 3%;
 }
 
 .login {
@@ -21,11 +21,17 @@
       max-width: 600px;
       width: 100%;
     }
+    @include largeScreen {
+      width: 50%;
+    }
   }
 
   #{&}__r {
     flex-grow: 1;
     padding-top: 200px;
+    @include largeScreen {
+      width: 50%;
+    }
     .heading {
       h3 {
         color: $primary-text;
@@ -65,7 +71,7 @@
         border: none;
         font-size: 15px;
       }
-      span {
+      button {
         color: $tertiary-text;
       }
     }

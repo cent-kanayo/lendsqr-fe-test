@@ -1,10 +1,13 @@
-import { Users } from '../../../usertypes';
+import { useState } from 'react';
+import { Users } from '../../Types/usertypes';
+import { fetchSingleUserFromLocalStorage } from '../../utils';
 
 interface Prop {
   user: Users;
 }
 
-const UserRecords = ({ user }: Prop) => {
+const UserRecords = () => {
+  const [user, setUser] = useState<Users>(fetchSingleUserFromLocalStorage());
   return (
     <div className="user-records">
       <div className="user-records__personal container-divs">

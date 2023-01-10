@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import LoginImage from '../../assets/login-image.png';
 import Logo from '../../assets/logo.png';
 import './_login.scss';
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <main className="login">
       <div className="login__l padding">
@@ -28,11 +30,16 @@ const Login = () => {
             </div>
             <div className="form-control">
               <input
-                type="text"
+                type={showPassword ? 'text' : 'password'}
                 className="form-group"
                 placeholder="Password"
               />
-              <span>SHOW</span>
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? 'HIDE' : 'SHOW'}
+              </button>
             </div>
             <p className="password">forgot password?</p>
             <button className="form__btn">LOG IN</button>

@@ -134,8 +134,25 @@ tr {
   font-size: 14px;
 }
 
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 20px;
+}
+@media (min-width: 800px) {
+  .grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1200px) {
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0 80px;
+  }
+}
+
 .padding {
-  padding: 5% 7%;
+  padding: 5% 3%;
 }
 
 .login {
@@ -157,9 +174,19 @@ tr {
   max-width: 600px;
   width: 100%;
 }
+@media (min-width: 1200px) {
+  .login .login__l {
+    width: 50%;
+  }
+}
 .login .login__r {
   flex-grow: 1;
   padding-top: 200px;
+}
+@media (min-width: 1200px) {
+  .login .login__r {
+    width: 50%;
+  }
 }
 .login .login__r .heading h3 {
   color: #213f7d;
@@ -199,7 +226,7 @@ tr {
   border: none;
   font-size: 15px;
 }
-.login .login__r .form-control span {
+.login .login__r .form-control button {
   color: #39cdcc;
 }
 .login .login__r .password {

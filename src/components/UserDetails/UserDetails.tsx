@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Users } from '../../../usertypes';
+import { Users } from '../../Types/usertypes';
 import Arrow from '../../assets/arrowL.png';
 import Avatar from '../../assets/avatar.png';
 import Startfill from '../../assets/starfill.png';
@@ -85,7 +85,7 @@ const UserDetails = () => {
           <button className="user-details__btns">App and System</button>
         </div>
       </div>
-      <UserRecords user={user} />
+      <UserRecords />
     </section>
   );
 };

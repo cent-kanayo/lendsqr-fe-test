@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import EyeIcon from '../../assets/eye.png';
 import CheckUser from '../../assets/check-user.png';
 import DeleteUSer from '../../assets/delete-user.png';
-import { Users } from '../../../usertypes';
+import { Users } from '../../Types/usertypes';
 
 const UserDetailsModal = ({ userId }: { userId: string }) => {
   return (

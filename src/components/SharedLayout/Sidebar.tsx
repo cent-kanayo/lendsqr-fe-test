@@ -6,8 +6,10 @@ import { sidebarLinks } from './sharedutils';
 import '../../styles/_main.scss';
 import './_layout.scss';
 import { NavLink } from 'react-router-dom';
-import { SidebarProp } from './SharedLayout';
-const Sidebar = ({ showSidebar, setShowSidebar }: SidebarProp) => {
+import { useGlobalContext } from '../../Context/context';
+
+const Sidebar = () => {
+  const { showSidebar, setShowSidebar } = useGlobalContext();
   return (
     <aside className={`sidebar ${showSidebar && 'show-sidebar'}`}>
       <div className="flexCol">

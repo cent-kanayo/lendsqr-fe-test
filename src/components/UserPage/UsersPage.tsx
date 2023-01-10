@@ -6,24 +6,25 @@ import User4 from '../../assets/user-4.png';
 import NextBtn from '../../assets/next-btn.png';
 import PrevBtn from '../../assets/prev-btn.png';
 import DropDown from '../../assets/switch-dropdown.png';
-
-import { Users } from '../../../usertypes';
-
 import UsersTable from './UsersTable';
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { useState } from 'react';
 import FormModal from './FormModal';
-import UserDetailsModal from './UserDetailsModal';
+import { useGlobalContext } from '../../Context/context';
 
-export interface User {
-  users: Users[];
-  location?: { left: number; top: number };
-  setModalLocation: Dispatch<SetStateAction<{ left: number; top: number }>>;
-}
-
-const UsersPage = ({ users, location, setModalLocation }: User) => {
+const UsersPage = () => {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [showDetails, setShowDetails] = useState<boolean>(false);
-  const userInput = useRef(null);
+  const [selectOptions, setSelectOption] = useState(10);
+
+  const {
+    users,
+    setModalLocation,
+    prevPage,
+    nextPage,
+    updateNumPerPage,
+    setPage,
+  } = useGlobalContext();
+
   return (
     <div className="users">
       <h4 className="text-color1">Users</h4>
@@ -35,22 +36,40 @@ const UsersPage = ({ users, location, setModalLocation }: User) => {
       </div>
       <div className="table__container">
         <UsersTable
-          users={users}
           showDetails={showDetails}
           setShowFilter={setShowFilter}
           setShowDetails={setShowDetails}
-          setModalLocation={setModalLocation}
         />
-        {showFilter && <FormModal location={location} />}
+        {showFilter && (
+          <>
+            <FormModal />
+            <FormModal />
+          </>
+        )}
       </div>
       <div className="filters">
         <div className="flex text-color2">
           <span>Showing</span>
           <div className="flex text-color1 select">
-            <select name="" id="" value="10">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">40</option>
+            <select
+              name=""
+              id=""
+              value={selectOptions}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setSelectOption(+e.target.value)
+              }
+              onSubmit={(e) => {
+                e.preventDefault();
+                updateNumPerPage(selectOptions);
+              }}
+            >
+              {[10, 20, 30, 40, 50].map((opt, index) => {
+                return (
+                  <option key={index} value={opt}>
+                    {opt}
+                  </option>
+                );
+              })}
             </select>
             <span>
               <img src={DropDown} alt="Drop down icon" />
@@ -60,19 +79,27 @@ const UsersPage = ({ users, location, setModalLocation }: User) => {
         </div>
         <div className="filters__btn flex text-color2">
           <div>
-            <button aria-label="prev button">
+            <button aria-label="prev button" onClick={prevPage}>
               <img src={PrevBtn} alt="" />
             </button>
           </div>
           {users?.slice(0, 3).map((_, index) => {
-            return <button>{index + 1}</button>;
+            return (
+              <button key={index} onClick={() => setPage(index)}>
+                {index + 1}
+              </button>
+            );
           })}
           <span>...</span>
-          {users?.slice(users.length - 2).map((_, index) => {
-            return <button>{index + 1}</button>;
+          {[8, 9].map((i, index) => {
+            return (
+              <button key={index} onClick={() => setPage(i)}>
+                {i + 1}
+              </button>
+            );
           })}
           <div>
-            <button aria-label="next button">
+            <button aria-label="next button" onClick={nextPage}>
               <img src={NextBtn} alt="" />
             </button>
           </div>

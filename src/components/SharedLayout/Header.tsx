@@ -4,20 +4,31 @@ import Dropdown from '../../assets/drop.png';
 import Notification from '../../assets/notification.png';
 import SearchIcon from '../../assets/search.png';
 import './_layout.scss';
-import { SidebarProp } from './SharedLayout';
+import { useGlobalContext } from '../../Context/context';
+import { useEffect, useRef } from 'react';
 
-const Header = ({ setShowSidebar }: SidebarProp) => {
+const Header = () => {
+  const { setShowSidebar, showSidebar } = useGlobalContext();
+
+  const toggleRef = useRef<React.MutableRefObject<undefined | string>>();
+  const handleClick = () => {
+    toggleRef.current.classList.toggle('open');
+
+    setShowSidebar((prev) => !prev);
+  };
+  useEffect(() => {
+    if (!showSidebar) {
+      toggleRef.current.classList.remove('open');
+    }
+  }, [showSidebar]);
   return (
     <header className="header">
       <div className="header__l">
-        <div className="header__logo flex">
-          <button
-            className="header__toggle-btn "
-            onClick={() => setShowSidebar!((prev) => !prev)}
-          >
-            <span>|</span>
-            <span>|</span>
-            <span>|</span>
+        <div className="header__logo">
+          <button className="hamburger" ref={toggleRef} onClick={handleClick}>
+            <span className="hamburger-top"></span>
+            <span className="hamburger-md"></span>
+            <span className="hamburger-bt"></span>
           </button>
           <img src={Logo} alt="Brand Logo" />
         </div>

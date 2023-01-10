@@ -17,14 +17,57 @@
     gap: 0 20px;
 
     .header__logo {
-      .header__toggle-btn {
+      display: flex;
+      align-items: center;
+      gap: 0 20px;
+      .hamburger {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        transition: all 0.25s;
+        position: relative;
+        margin-top: 10px;
         @include largeScreen {
           display: none;
         }
       }
-      img {
-        width: 100px;
+      .hamburger-top,
+      .hamburger-md,
+      .hamburger-bt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 24px;
+        height: 2px;
+        background-color: $tertiary-text;
+        transform: rotate(0);
+        transition: all 0.5s;
       }
+      .hamburger-top {
+        transform: translateY(-7px);
+      }
+      .hamburger-bt {
+        transform: translateY(7px);
+      }
+
+      .open {
+        transform: rotate(90deg);
+        transform: translateY(0px);
+      }
+      .open .hamburger-top {
+        transform: rotate(45deg) translateY(6px) translate(6px);
+      }
+      .open .hamburger-md {
+        display: none;
+      }
+      .open .hamburger-bt {
+        transform: rotate(-45deg) translateY(6px) translate(-6px);
+      }
+
+      img {
+        width: 110px;
+      }
+
       @include tabletSize {
         img {
           width: auto;
@@ -104,7 +147,8 @@
   }
 }
 .sidebar {
-  display: none;
+  transform: translate(-100%);
+  position: fixed;
   width: 283px;
   background: #ffffff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);

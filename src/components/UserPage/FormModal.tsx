@@ -1,15 +1,13 @@
 import { useEffect, useRef } from 'react';
+import { useGlobalContext } from '../../Context/context';
 
-const FormModal = ({
-  location,
-}: {
-  location: { left: number; top: number };
-}) => {
+const FormModal = () => {
+  const { modalLocation: location } = useGlobalContext();
   const formRef = useRef(null);
 
   useEffect(() => {
     const modal = formRef.current;
-    modal.style!.left = `${location.left}px`;
+    modal.style.left = `${location.left}px`;
     modal.style.top = `${location.top}px`;
   }, [location.left, location.top]);
   return (

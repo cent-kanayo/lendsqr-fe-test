@@ -1,39 +1,47 @@
-import { Table } from 'react-bootstrap';
 import FilterIcon from '../../assets/filter-results-button.png';
 import Dots from '../../assets/dots.png';
-import { Link } from 'react-router-dom';
-import { Users } from '../../../usertypes';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import UserDetailsModal from './UserDetailsModal';
+import { useGlobalContext } from '../../Context/context';
 
 type Prop = {
-  users: Users[];
   showDetails: boolean;
   setShowFilter: Dispatch<SetStateAction<boolean>>;
   setShowDetails: Dispatch<SetStateAction<boolean>>;
-  setModalLocation: Dispatch<SetStateAction<{ left: number; top: number }>>;
 };
-const UsersTable = ({
-  users,
-  showDetails,
-  setShowFilter,
-  setShowDetails,
-  setModalLocation,
-}: Prop) => {
+const UsersTable = ({ setShowFilter }: Prop) => {
+  const { setModalLocation } = useGlobalContext();
+  const [userSelectModal, setUserSelectModal] = useState<null | string>(null);
+
+  const onShowUserSelectModal = (id: string) => {
+    console.log(id, userSelectModal);
+    if (id === userSelectModal) {
+      setUserSelectModal(null);
+    } else {
+      setUserSelectModal(id);
+    }
+  };
+
+  const onHideUserSelectModal = () => {
+    console.log('here');
+    setUserSelectModal(null);
+  };
+
+  const { paginated: users } = useGlobalContext();
   const showModalForm = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const tempBtn = event.currentTarget.getBoundingClientRect();
 
-    const top = tempBtn.top / 4;
-    const left = tempBtn.left - 450;
+    const left = tempBtn.left - 300;
+    const top = 100;
 
     setShowFilter((prev) => !prev);
     setModalLocation({ left, top });
   };
   return (
     <div className="table">
-      <Table responsive width="100%" cellSpacing="20px">
+      <table cellSpacing="20px">
         <thead>
           <tr style={{ borderBottom: '1px solid gray' }}>
             <th align="left">
@@ -88,7 +96,7 @@ const UsersTable = ({
           </tr>
         </thead>
         <tbody>
-          {users?.map((user) => {
+          {users.map((user, index) => {
             return (
               <>
                 <tr key={user.id} className="table__data">
@@ -114,10 +122,10 @@ const UsersTable = ({
                     <img
                       src={Dots}
                       alt="toggle"
-                      onClick={() => setShowDetails((prev) => !prev)}
+                      onClick={() => onShowUserSelectModal(user.id || '')}
                     />
                   </td>
-                  {showDetails && (
+                  {userSelectModal === user.id && (
                     <div>
                       <UserDetailsModal userId={user.id} />
                     </div>
@@ -127,7 +135,7 @@ const UsersTable = ({
             );
           })}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 };
