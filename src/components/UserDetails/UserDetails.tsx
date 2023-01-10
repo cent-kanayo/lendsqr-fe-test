@@ -56,7 +56,7 @@ const UserDetails = () => {
             />
           </div>
           <div className="user-name">
-            <h3 className="text-color1 bottom-margin">{`${user?.profile.firstName} ${user?.profile.lastName}`}</h3>
+            <h3 className="text-color1 bottom-margin">{`${user?.profile?.firstName} ${user?.profile?.lastName}`}</h3>
             <p className="text-color2">LSQFf587g90</p>
           </div>
           <div className="user-division"></div>
@@ -71,7 +71,7 @@ const UserDetails = () => {
           <div className="user-division"></div>
           <div className="user-bank-detail text-color1">
             <h4 className="bottom-margin">₦{user?.accountBalance}</h4>
-            <p>{`${user.accountNumber}`}/Providus Bank</p>
+            <p>{`${user?.accountNumber}`}/Providus Bank</p>
           </div>
         </div>
         <div className="user-details__btn-container">
