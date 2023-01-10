@@ -11,21 +11,25 @@ import UserRecords from './UserRecords';
 import './_userdetails.scss';
 const UserDetails = () => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
     const fetchSingleUser = async () => {
       try {
+        setLoading(true);
         const { data } = await customFetch.get<Promise<Users>>(`/users/${id}`);
         setUser(data);
+        setLoading(false);
       } catch (error: any) {
         console.log(error.message);
+        setLoading(false);
       }
     };
     fetchSingleUser();
   }, [id]);
-  if (!user) return <h1>Loading...</h1>;
+  if (loading) return <h3 className="text-color1">Loading...</h3>;
   return (
     <section>
       <div className="user-details-page flex">
