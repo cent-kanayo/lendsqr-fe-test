@@ -8,7 +8,7 @@ const AppContent = createContext<AppContext | null>(null);
 const AppProvider = ({ children }) => {
   const [numPerPage, setNumberPerPage] = useState(10);
   const [page, setPage] = useState(0);
-  const [totalUsers] = useState<Users[]>(fetchUsersFromLocalStorage());
+  const [totalUsers, setTotalUsers] = useState<Users[]>([]);
   const [users, setUsers] = useState(
     paginate(fetchUsersFromLocalStorage(), numPerPage) as Users[][]
   );
@@ -62,6 +62,7 @@ const AppProvider = ({ children }) => {
         });
         // Saving users to local storage
         localStorage.setItem('Users', JSON.stringify(modifiedData));
+        setTotalUsers(fetchUsersFromLocalStorage());
       } catch (error: any) {
         console.log(error.message);
       }

@@ -11,7 +11,6 @@ type Prop = {
   setShowDetails: Dispatch<SetStateAction<boolean>>;
 };
 const UsersTable = ({ setShowFilter }: Prop) => {
-  const { setModalLocation } = useGlobalContext();
   const [userSelectModal, setUserSelectModal] = useState<null | string>(null);
 
   const onShowUserSelectModal = (id: string) => {
@@ -23,7 +22,7 @@ const UsersTable = ({ setShowFilter }: Prop) => {
     }
   };
 
-  const { paginated: users } = useGlobalContext();
+  const { paginated: users, setModalLocation } = useGlobalContext();
   const showModalForm = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -92,6 +91,7 @@ const UsersTable = ({ setShowFilter }: Prop) => {
           </tr>
         </thead>
         <tbody>
+          {/* {users.length < 1 && <h3 className="text-color1">Loading...</h3>} */}
           {users?.map((user) => {
             return (
               <tr key={user.id} className="table__data">
