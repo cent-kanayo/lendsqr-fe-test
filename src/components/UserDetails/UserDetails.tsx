@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Users } from '../../Types/usertypes';
 import Arrow from '../../assets/arrowL.png';
 import Startfill from '../../assets/starfill.png';
 import Startsolid from '../../assets/starsolid.png';
@@ -9,8 +8,9 @@ import { customFetch } from '../../utils';
 import UserRecords from './UserRecords';
 
 import './_userdetails.scss';
+import { SingleUser } from '../../Types/singleUser';
 const UserDetails = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({} as SingleUser);
   const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
@@ -19,8 +19,8 @@ const UserDetails = () => {
     const fetchSingleUser = async () => {
       try {
         setLoading(true);
-        const { data } = await customFetch.get<Promise<Users>>(`/users/${id}`);
-        setUser(data);
+        const response = await customFetch.get(`/users/${id}`);
+        setUser(response.data);
         setLoading(false);
       } catch (error: any) {
         console.log(error.message);

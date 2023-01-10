@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { Users } from '../../Types/usertypes';
-import { fetchSingleUserFromLocalStorage } from '../../utils';
+import { SingleUser } from '../../Types/singleUser';
 
 interface Prop {
-  user: Users;
+  user: SingleUser;
 }
 
 const UserRecords = ({ user }: Prop) => {
@@ -38,7 +36,7 @@ const UserRecords = ({ user }: Prop) => {
           </div>
           <div className="margin-bottom">
             <p>Children</p>
-            <h6>{`${user.profile?.firstName} ${user.profile?.lastName}`}</h6>
+            <h6>{`${user.profile.firstName} ${user.profile.lastName}`}</h6>
           </div>
           <div className="margin-bottom">
             <p>Type of residence</p>
@@ -101,7 +99,7 @@ const UserRecords = ({ user }: Prop) => {
         <div className="grid-4">
           <div className="margin-bottom">
             <p>full Name</p>
-            <h6>{`${user.guarantor?.firstName} ${user.guarantor?.lastName}`}</h6>
+            <h6>{`${user.guarantor.firstName} ${user.guarantor.lastName}`}</h6>
           </div>
           <div className="margin-bottom">
             <p>Phone Number</p>
